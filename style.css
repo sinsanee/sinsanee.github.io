@@ -5,7 +5,6 @@ body {
   font-family: 'Rubik', sans-serif;
   color: #fff;
   margin: 0;
-  padding: 20px;
 }
 
 .container {
@@ -32,6 +31,57 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
+}
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Rubik', sans-serif;
+  border-bottom: 1px solid #444;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: #ddd;
+  text-decoration: none;
+  padding: 5px 10px;
+  transition: background-color 0.2s;
+  border-radius: 5px;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  background-color: #c05b37;
+  color: #fff;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 20px;
+  background-color: #c05b37;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.cta-button:hover {
+  background-color: #ff9568;
 }
 
 .image-button {
