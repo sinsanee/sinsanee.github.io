@@ -1,0 +1,125 @@
+body {
+  background-image: url('images/vespucci.png');
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Rubik', sans-serif;
+  color: #fff;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.image-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  background-color: #c05b37;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.2s ease-in-out, background-color 0.2s;
+}
+
+.image-button:hover {
+  transform: scale(1.05);
+  background-color: #ff9568;
+}
+
+.image-button img {
+  width: 200px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.image-button span {
+  margin-top: 5px;
+  text-align: center;
+}
+
+#wishlist li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  list-style: none;
+  animation: fadeIn 0.5s ease-in;
+  border-top: 1px solid #444;
+}
+
+#total {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.pagination {
+  margin-top: 10px;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: #6e2e8a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #9b59b6;
+}
+
+.remove-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.remove-button:hover {
+  background-color: #c0392b;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(10px); }
+}
+
+.fade-out {
+  animation: fadeOut 0.3s forwards;
+}

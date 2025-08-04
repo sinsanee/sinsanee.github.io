@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GTA 5 Online Wishlist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>GTA 5 Online Wishlist</h1>
+
+    <div class="section">
+      <h2>Select Items</h2>
+      <div class="filters">
+        <label for="categoryFilter">Filter by Type:</label>
+        <select id="categoryFilter">
+          <option value="All">All</option>
+          <option value="Car">Car</option>
+          <option value="Plane">Plane</option>
+          <option value="Helicopter">Helicopter</option>
+          <option value="Property">Property</option>
+          <option value="Weapon">Weapon</option>
+        </select>
+
+        <label for="searchBox">Search:</label>
+        <input type="text" id="searchBox" placeholder="Search by name..." />
+
+        <label for="sortOrder">Sort:</label>
+        <select id="sortOrder">
+          <option value="name">Alphabetically</option>
+          <option value="random">Random</option>
+        </select>
+      </div>
+      <div id="items" class="item-grid"></div>
+      <div class="pagination">
+        <button id="prevItems">Previous</button>
+        <button id="nextItems">Next</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Your Wishlist</h2>
+      <ul id="wishlist" class="sortable"></ul>
+      <div class="pagination">
+        <button id="prevWishlist">Previous</button>
+        <button id="nextWishlist">Next</button>
+      </div>
+      <div id="total">Total: $0</div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
