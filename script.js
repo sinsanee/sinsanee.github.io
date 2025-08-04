@@ -16,8 +16,10 @@ let itemList = [
   { name: 'F-160 Raiju', category: 'Plane', price: 6855000 },
   { name: 'Hydra', category: 'Plane', price: 3990000 },
   { name: 'Sparrow', category: 'Helicopter', price: 1815000 },
+  { name: 'Buzzard Attack Chopper', category: 'Helicopter', price: 2000000 },
   { name: 'Service Carbine', category: 'Weapon', price: 370000 },
   { name: 'Minigun', category: 'Weapon', price: 50000 },
+  { name: 'Assault Shotgun', category: 'Weapon', price: 10000 },
   { name: 'West Vinewood Nightclub', category: 'Property', price: 1700000 },
   { name: 'Eclipse Towers Penthouse Suite 3', category: 'Property', price: 1100000 },
   { name: 'Eclipse Towers Penthouse Suite 2', category: 'Property', price: 905000 },
@@ -158,6 +160,19 @@ function renderWishlist() {
     wishlist.appendChild(li);
   });
 }
+
+const copyLinkBtn = document.getElementById('copyLinkBtn');
+const copyStatus = document.getElementById('copyStatus');
+
+copyLinkBtn.onclick = () => {
+  updateURLWishlist(); // Ensure URL is fresh
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    copyStatus.textContent = "Link copied!";
+    setTimeout(() => copyStatus.textContent = '', 2000);
+  }).catch(err => {
+    copyStatus.textContent = "Failed to copy.";
+  });
+};
 
 wishlist.addEventListener('dragstart', e => {
   e.dataTransfer.setData('text/plain', e.target.dataset.index);

@@ -19,6 +19,26 @@ body {
   margin-bottom: 30px;
 }
 
+.copy-button {
+  background-color: #6e2e8a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 12px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.copy-button:hover {
+  background-color: #9b59b6;
+}
+
+.copy-status {
+  margin-left: 10px;
+  color: #2ecc71;
+  font-weight: 500;
+}
+
 .filters {
   display: flex;
   flex-wrap: wrap;
