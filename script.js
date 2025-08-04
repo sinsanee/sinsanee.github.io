@@ -9,15 +9,19 @@ let itemList = [
   { name: 'Rocket Voltic', category: 'Car', price: 3830400 },
   { name: 'Rhino Tank', category: 'Car', price: 3000000 },
   { name: 'Blazer Aqua', category: 'Car', price: 1755600 },
+  { name: 'Stromberg', category: 'Car', price: 2500000 },
+  { name: 'Deluxo', category: 'Car', price: 5750000 },
   { name: 'TM-02 Khanjali', category: 'Car', price: 3850350 },
   { name: 'P-996 LAZER', category: 'Plane', price: 6500000 },
   { name: 'F-160 Raiju', category: 'Plane', price: 6855000 },
   { name: 'Hydra', category: 'Plane', price: 3990000 },
   { name: 'Sparrow', category: 'Helicopter', price: 1815000 },
-  { name: 'Service Carbine', category: 'Weapon', price: 275000 },
-  { name: 'Minigun', category: 'Weapon', price: 499000 },
+  { name: 'Service Carbine', category: 'Weapon', price: 370000 },
+  { name: 'Minigun', category: 'Weapon', price: 50000 },
   { name: 'West Vinewood Nightclub', category: 'Property', price: 1700000 },
   { name: 'Eclipse Towers Penthouse Suite 3', category: 'Property', price: 1100000 },
+  { name: 'Eclipse Towers Penthouse Suite 2', category: 'Property', price: 905000 },
+  { name: 'Eclipse Towers Penthouse Suite 1', category: 'Property', price: 985000 },
 ];
 
 let currentItemPage = 0;
@@ -58,7 +62,7 @@ function loadWishlistFromURL() {
   const names = wishlistParam.split(',').map(decodeURIComponent);
   wishlistItems = names
     .map(name => itemList.find(item => item.name === name))
-    .filter(Boolean); // remove not found
+    .filter(Boolean);
   total = wishlistItems.reduce((sum, item) => sum + item.price, 0);
   updateTotal();
 }
@@ -177,6 +181,7 @@ wishlist.addEventListener('drop', e => {
   const item = wishlistItems.splice(fromIndex, 1)[0];
   wishlistItems.splice(toIndex, 0, item);
   renderWishlist();
+  updateURLWishlist(); // <-- ADD THIS LINE
 });
 
 prevItemsBtn.onclick = () => {
