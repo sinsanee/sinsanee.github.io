@@ -1,29 +1,47 @@
 let itemList = [
-  { name: 'Oppressor Mk2', category: 'Car', price: 8000000 },
-  { name: 'Oppressor Mk1', category: 'Car', price: 2750000 },
-  { name: 'Granger 3600LX', category: 'Car', price: 2000000 },
-  { name: 'Zentorno', category: 'Car', price: 725000 },
-  { name: 'Tempesta', category: 'Car', price: 1329000 },
-  { name: 'Weaponized Ignus', category: 'Car', price: 4500000 },
-  { name: 'Vigilante', category: 'Car', price: 3750000 },
-  { name: 'Rocket Voltic', category: 'Car', price: 3830400 },
-  { name: 'Rhino Tank', category: 'Car', price: 3000000 },
-  { name: 'Blazer Aqua', category: 'Car', price: 1755600 },
-  { name: 'Stromberg', category: 'Car', price: 2500000 },
-  { name: 'Deluxo', category: 'Car', price: 5750000 },
-  { name: 'TM-02 Khanjali', category: 'Car', price: 3850350 },
-  { name: 'P-996 LAZER', category: 'Plane', price: 6500000 },
-  { name: 'F-160 Raiju', category: 'Plane', price: 6855000 },
-  { name: 'Hydra', category: 'Plane', price: 3990000 },
-  { name: 'Sparrow', category: 'Helicopter', price: 1815000 },
-  { name: 'Buzzard Attack Chopper', category: 'Helicopter', price: 2000000 },
-  { name: 'Service Carbine', category: 'Weapon', price: 370000 },
-  { name: 'Minigun', category: 'Weapon', price: 50000 },
-  { name: 'Assault Shotgun', category: 'Weapon', price: 10000 },
-  { name: 'West Vinewood Nightclub', category: 'Property', price: 1700000 },
-  { name: 'Eclipse Towers Penthouse Suite 3', category: 'Property', price: 1100000 },
-  { name: 'Eclipse Towers Penthouse Suite 2', category: 'Property', price: 905000 },
-  { name: 'Eclipse Towers Penthouse Suite 1', category: 'Property', price: 985000 },
+  { name: 'Oppressor Mk2', categories: ['Car', 'Motorcycle'], price: 8000000 },
+  { name: 'Oppressor Mk1', categories: ['Car', 'Motorcycle'], price: 2750000 },
+
+  { name: 'Blazer Aqua', categories: ['Car', 'Quad'], price: 1755600 },
+  { name: 'Street Blazer', categories: ['Car', 'Quad'], price: 81000 },
+    
+  { name: 'Terrorbyte', categories: ['Car', 'Truck'], price: 3459500 },
+  
+  { name: 'Granger 3600LX', categories: ['Car'], price: 2000000 },
+  { name: 'Zentorno', categories: ['Car'], price: 725000 },
+  { name: 'Tempesta', categories: ['Car'], price: 1329000 },
+  { name: 'Weaponized Ignus', categories: ['Car'], price: 4500000 },
+  { name: 'Vigilante', categories: ['Car'], price: 3750000 },
+  { name: 'Rocket Voltic', categories: ['Car'], price: 3830400 },
+  { name: 'Stromberg', categories: ['Car'], price: 2500000 },
+  { name: 'Deluxo', categories: ['Car'], price: 5750000 },
+  { name: 'Sentinel GTS', categories: ['Car'], price: 2172000 },
+  { name: 'Toros', categories: ['Car'], price: 498000 },
+  { name: 'T20', categories: ['Car'], price: 2200000 },
+  { name: 'Tyrus', categories: ['Car'], price: 2550000 },
+  { name: 'Emerus', categories: ['Car'], price: 2750000 },
+
+  { name: 'Rhino Tank', categories: ['Car', 'Tank'], price: 3000000 },
+  { name: 'TM-02 Khanjali', categories: ['Car', 'Tank'], price: 3850350 },
+
+  { name: 'P-996 LAZER', categories: ['Plane'], price: 6500000 },
+  { name: 'F-160 Raiju', categories: ['Plane'], price: 6855000 },
+  { name: 'Hydra', categories: ['Plane'], price: 3990000 },
+  { name: 'Luxor', categories: ['Plane'], price: 1625000 },
+  { name: 'Luxor Deluxe', categories: ['Plane'], price: 10000000 },
+
+  { name: 'Sparrow', categories: ['Helicopter'], price: 1815000 },
+  { name: 'Buzzard Attack Chopper', categories: ['Helicopter'], price: 2000000 },
+
+  { name: 'Service Carbine', categories: ['Weapon'], price: 370000 },
+  { name: 'Minigun', categories: ['Weapon'], price: 50000 },
+  { name: 'Assault Shotgun', categories: ['Weapon'], price: 10000 },
+  { name: 'Up-N-Atomizer', categories: ['Weapon'], price: 399000 },
+  
+  { name: 'West Vinewood Nightclub', categories: ['Property'], price: 1700000 },
+  { name: 'Eclipse Towers Penthouse Suite 3', categories: ['Property'], price: 1100000 },
+  { name: 'Eclipse Towers Penthouse Suite 2', categories: ['Property'], price: 905000 },
+  { name: 'Eclipse Towers Penthouse Suite 1', categories: ['Property'], price: 985000 },
 ];
 
 let currentItemPage = 0;
@@ -80,10 +98,11 @@ function applyFilters() {
   const sort = sortOrder.value;
   const search = searchBox.value.trim().toLowerCase();
 
-  filteredList = itemList.filter(item =>
-    (type === 'All' || item.category === type) &&
-    item.name.toLowerCase().includes(search)
-  );
+    filteredList = itemList.filter(item =>
+        (type === 'All' || item.categories.includes(type)) &&
+        item.name.toLowerCase().includes(search)
+    );
+
 
   if (sort === 'name') {
     filteredList.sort((a, b) => a.name.localeCompare(b.name));
@@ -148,7 +167,7 @@ function renderWishlist() {
     li.dataset.index = start + i;
 
     const text = document.createElement('span');
-    text.textContent = `${item.name} (${item.category}) - $${item.price.toLocaleString()}`;
+    text.textContent = `${start + i + 1}. ${item.name} (${item.categories.join(', ')}) - $${item.price.toLocaleString()}`;
 
     const removeBtn = document.createElement('button');
     removeBtn.textContent = 'Remove';
